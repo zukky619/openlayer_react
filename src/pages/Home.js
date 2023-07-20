@@ -4,7 +4,7 @@ const Home = () => {
     const navigate = useNavigate();
     return (
         <div>
-            <p>Home</ p>
+            <p>Home</ p>                
             <button onClick={() => navigate("/login")}>login</ button>
         </ div>
     )

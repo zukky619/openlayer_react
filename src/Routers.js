@@ -1,20 +1,30 @@
+import * as React from 'react';
 import {
-    BrowserRouter as Router,
+    BrowserRouter,
+    Switch,
     Routes,
-    Route,
+    Route
   } from "react-router-dom";
-import Login from "./Login";
-import Home from "./Home";
+
+import MyNavigator from './organisms/MyNavigator';
+import Login from "./pages/Login";
+import Home from "./pages/Home";
 
 const Routers = () => {
     return (
-        <Router>
+
+        <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/home" element={<Home />} />
+                <Route path="/home" element={
+                    <>
+                        <MyNavigator />
+                        <Home />
+                    </>
+                } />
             </Routes>
-        </Router>
+        </BrowserRouter>
     )
 }
 
