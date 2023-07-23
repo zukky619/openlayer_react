@@ -9,6 +9,7 @@ import {
 import MyNavigator from './organisms/MyNavigator';
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Edit from "./pages/Edit";
 
 const Routers = () => {
     return (
@@ -21,6 +22,13 @@ const Routers = () => {
                     <>
                         <MyNavigator>
                             <Home />
+                        </MyNavigator>
+                    </>
+                } />
+                <Route path="/edit" element={
+                    <>
+                        <MyNavigator>
+                            <Edit />
                         </MyNavigator>
                     </>
                 } />

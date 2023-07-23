@@ -5,6 +5,11 @@ import MapContext from "./MapContext";
 import 'ol/ol.css';
 import './Map.css';
 
+import {
+  DragRotateAndZoom,
+  defaults as defaultInteractions,
+} from 'ol/interaction.js';
+
 import Projection from 'ol/proj/Projection.js';
 
 const extent = [0, 0, 1460, 1040];
@@ -28,11 +33,12 @@ console.log(children);
   // on component mount
   useEffect(() => {
     let options = {
-      view: new ol.View({
-        projection: projection,
-        zoom: zoom, 
-        center: center, 
-    }),
+        view: new ol.View({
+          projection: projection,
+          zoom: zoom, 
+          center: center, 
+      }),
+      interactions: defaultInteractions().extend([new DragRotateAndZoom()]),
       layers: [],
       controls: [],
       overlays: []
