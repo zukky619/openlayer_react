@@ -20,27 +20,23 @@ export default function PermanentDrawerLeft(props) {
   return (
     <>
         <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <Drawer
-            sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            '& .MuiDrawer-paper': {
+            <CssBaseline />
+            <Drawer
+                sx={{
                 width: drawerWidth,
-                boxSizing: 'border-box',
-            },
-            }}
-            variant="permanent"
-            anchor="left"
-        >
-            {props.children}
-        </Drawer>
+                flexShrink: 0,
+                '& .MuiDrawer-paper': {
+                    width: drawerWidth,
+                    boxSizing: 'border-box',
+                    backgroundColor: "#0B2A49",
+                },
+                }}
+                variant="permanent"
+                anchor="left"
+            >
+                {props.children}
+            </Drawer>
         </Box>
-        {/* <Box
-            component="main"
-            sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-        >
-        </Box> */}
     </>
   );
 }

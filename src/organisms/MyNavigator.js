@@ -21,28 +21,46 @@ export default function MyNavigator(props) {
                 <List component="nav" style={{height: '100vh'}}>
                     <ListItemButton component="a" href="/home">
                         <ListItemIcon>
-                        <WifiIcon />
+                        <WifiIcon color="primary"/>
                         </ListItemIcon>
-                        <ListItemText primary="Home" />
+                        <ListItemText primary="Home" primaryTypographyProps={{
+                            color: '#EEEEEE',
+                            fontWeight: 'medium',
+                            variant: 'body2',
+                        }}/>
                     </ListItemButton>
                     <ListItemButton component="a" href="/edit">
                         <ListItemIcon>
-                        <EditLocationIcon />
+                        <EditLocationIcon color="primary"/>
                         </ListItemIcon>
-                        <ListItemText primary="Edit" />
+                        <ListItemText primary="Edit" primaryTypographyProps={{
+                            color: '#EEEEEE',
+                            fontWeight: 'medium',
+                            variant: 'body2',
+                        }}/>
                     </ListItemButton>
                 </List>
                 <List component="nav" style={{position: 'absolute', bottom: '0px', right: '0px', left: '0px'}}>
-                    <Divider />
+                    <Divider color="#1976D2"/>
                     <ListItemButton component="a" href="/">
                         <ListItemIcon>
-                            <LogoutIcon />
+                            <LogoutIcon color="primary"/>
                         </ListItemIcon>
-                        <ListItemText primary="ログアウト" />
+                        <ListItemText primary="Logout" primaryTypographyProps={{
+                            color: '#EEEEEE',
+                            fontWeight: 'medium',
+                            variant: 'body2',
+                        }}/>
                     </ListItemButton>
                 </List>
 
             </MySidebar>
+            <Box
+                component="main"
+                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 , paddingLeft: '240px'}}
+            >
+                {props.children}
+            </Box>
         </>
     );
 }
