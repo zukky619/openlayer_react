@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import MapMain from "../MapMain.js";
 
 const Home = () => {
-    const navigate = useNavigate();
+    console.log(MapMain);
+    console.log("Home.jsを通った")
     return (
-        <div>
-            <p>Home</ p>                
-            <button onClick={() => navigate("/login")}>login</ button>
-        </ div>
+        <MapMain />
     )
 }
 
