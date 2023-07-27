@@ -23,10 +23,6 @@ const projection = new Projection({
 
 const Map = ({ children, zoom, center }) => {
     const mapRef = useRef();
-    console.log(zoom);
-    console.log(center);
-    console.log("childrenとは");
-    console.log(children);
     const [map, setMap] = useState(null);
 
     // on component mount
@@ -45,11 +41,9 @@ const Map = ({ children, zoom, center }) => {
             overlays: [],
         };
         let mapObject = new ol.Map(options);
-        console.log("aaa");
-        console.log(mapObject);
+
         mapObject.setTarget(mapRef.current);
         setMap(mapObject);
-        console.log(map);
         return () => mapObject.setTarget(undefined);
     }, []);
 

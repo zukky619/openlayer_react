@@ -4,10 +4,6 @@ import OLTileLayer from "ol/layer/Tile";
 
 const TileLayer = ({ source, zIndex = 0 }) => {
     const { map } = useContext(MapContext);
-    console.log("TileLayersに入っている！！！！");
-    console.log(map);
-    console.log(zIndex);
-    console.log(source);
     useEffect(() => {
         if (!map) return;
 
