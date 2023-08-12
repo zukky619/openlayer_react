@@ -17,23 +17,15 @@ import MapExample from "./resources/map_example.jpg";
 
 export default function MapMain() {
     //   const [center, setCenter] = useState([-94.9065, 38.9884]);
-    const [center, setCenter] = useState([730, 530]);
-    const [zoom, setZoom] = useState(1);
+    // const [center, setCenter] = useState([730, 530]);
+    // const [zoom, setZoom] = useState(1);
 
     return (
         <div>
-            <Map center={center} zoom={zoom}>
-                {/* <Map center={fromLonLat(center)} zoom={zoom} > */}
-                <Layers>
-                    {/* <TileLayer
-            source={new olSource.OSM()}
-            zIndex={0}
-          /> */}
-                    <MyImageLayer imageSource={MapExample} />
-                </Layers>
-                <Controls>
+            <Map source={MapExample}>
+                {/* <Controls>
                     <FullScreenControl />
-                </Controls>
+                </Controls> */}
             </Map>
         </div>
     );

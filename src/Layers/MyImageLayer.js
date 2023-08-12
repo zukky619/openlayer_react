@@ -6,20 +6,8 @@ import Projection from "ol/proj/Projection.js";
 
 import { useImageSize } from "react-image-size";
 
-// import MapExample from "../resources/map_example.jpg";
-
-const MyImageLayer = ({ imageSource }) => {
+const MyImageLayer = ({ imageSource, projection, extent }) => {
     const { map } = useContext(MapContext);
-
-    const [dimensions, { loading, error }] = useImageSize(imageSource);
-
-    const extent = [0, 0, 1460, 1040];
-    const projection = new Projection({
-        // code: 'xkcd-image',
-        code: "local_image",
-        units: "pixels",
-        extent: extent,
-    });
 
     const source = new Static({
         url: imageSource,
