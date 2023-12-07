@@ -77,7 +77,7 @@ export default function MyNavigator(props) {
                     flexGrow: 1,
                     bgcolor: "background.default",
                     p: 3,
-                    paddingLeft: "240px",
+                    paddingLeft: "260px",
                 }}
             >
                 {props.children}

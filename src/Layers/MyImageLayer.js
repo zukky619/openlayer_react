@@ -2,12 +2,30 @@ import { useContext, useEffect } from "react";
 import MapContext from "../Map/MapContext";
 import ImageLayer from "ol/layer/Image";
 import Static from "ol/source/ImageStatic";
-import Projection from "ol/proj/Projection.js";
+import { transform } from "ol/proj";
 
-import { useImageSize } from "react-image-size";
-
-const MyImageLayer = ({ imageSource, projection, extent }) => {
+const MyImageLayer = ({ imageSource, imageAnchor, imageResolution }) => {
     const { map } = useContext(MapContext);
+
+    const image = new Image();
+    image.src = imageSource;
+    const width = image.width;
+    const height = image.height;
+
+    const projection = "EPSG:3857";
+
+    const imageAnchorCooodinate = transform(
+        imageAnchor,
+        "EPSG:4326",
+        "EPSG:3857"
+    );
+
+    const extent = [
+        imageAnchorCooodinate[0],
+        imageAnchorCooodinate[1],
+        imageAnchorCooodinate[0] + imageResolution * width,
+        imageAnchorCooodinate[1] + imageResolution * height,
+    ];
 
     const source = new Static({
         url: imageSource,
