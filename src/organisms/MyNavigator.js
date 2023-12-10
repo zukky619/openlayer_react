@@ -9,7 +9,6 @@ import ListItemText from "@mui/material/ListItemText";
 
 import WifiIcon from "@mui/icons-material/Wifi";
 import LogoutIcon from "@mui/icons-material/Logout";
-import MyLocationIcon from "@mui/icons-material/MyLocation";
 import EditLocationIcon from "@mui/icons-material/EditLocation";
 
 import MySidebar from "./MaterialSidemenu";

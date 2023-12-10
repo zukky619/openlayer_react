@@ -21,7 +21,7 @@ import Point from "ol/geom/Point.js";
 import { Fill, RegularShape, Stroke, Style } from "ol/style.js";
 import { ApLayer } from "../Layers";
 
-const Map = ({ children, zoom, center }) => {
+const Map = ({ children, zoom, center, rotation = 0, isEditMode = false }) => {
     const mapRef = useRef();
     const [map, setMap] = useState(null);
 
@@ -36,6 +36,7 @@ const Map = ({ children, zoom, center }) => {
                 projection: projection,
                 zoom: zoom,
                 center: coordinate,
+                rotation: rotation * (Math.PI / 180),
             }),
             interactions: defaultInteractions().extend([
                 new DragRotateAndZoom(),
@@ -53,37 +54,24 @@ const Map = ({ children, zoom, center }) => {
         mapObject.setTarget(mapRef.current);
         setMap(mapObject);
 
-        mapObject.on("click", function (e) {
-            // クリックした場所の座標を取得
-            // ctrlキーを押した場合
-            if (e.originalEvent.ctrlKey) {
+        if (isEditMode) {
+            mapObject.on("click", function (e) {
                 // クリックした場所の座標を取得
-                const clickedCoordinate = e.coordinate;
-                console.log(clickedCoordinate);
-                const ap_layer = ApLayer({
-                    coordinate: clickedCoordinate,
-                    angle: 0,
-                });
-                mapObject.addLayer(ap_layer);
-            }
-            // const clickedCoordinate = e.coordinate;
-            // console.log(clickedCoordinate);
-        });
+                // ctrlキーを押した場合
+                if (e.originalEvent.ctrlKey) {
+                    // クリックした場所の座標を取得
+                    const clickedCoordinate = e.coordinate;
+                    console.log(clickedCoordinate);
+                    const ap_layer = ApLayer({
+                        coordinate: clickedCoordinate,
+                        angle: 0,
+                    });
+                    mapObject.addLayer(ap_layer);
+                }
+            });
+        }
         return () => mapObject.setTarget(undefined);
     }, []);
-
-    // zoom change handler
-    // useEffect(() => {
-    //     if (!map) return;
-    //     map.getView().setZoom(zoom);
-    // }, [zoom]);
-
-    // center change handler
-    // useEffect(() => {
-    //     if (!map) return;
-
-    //     map.getView().setCenter(center);
-    // }, [center]);
 
     return (
         <MapContext.Provider value={{ map }}>
